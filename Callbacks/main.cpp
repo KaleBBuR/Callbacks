@@ -50,7 +50,7 @@ CreateProcessValueName(_In_ ULONG Num, PUNICODE_STRING VN)
     Status = RtlIntegerToUnicodeString(Num, NULL, &Number);
     if (!NT_SUCCESS(Status))
     {
-        ERR_LOG("FUCK MEEEE");
+        ERR_LOG("could not convert integer to string");
         goto Log;
     }
 
@@ -59,14 +59,14 @@ CreateProcessValueName(_In_ ULONG Num, PUNICODE_STRING VN)
     Status = RtlAppendUnicodeStringToString(&ValueName, &Number);
     if (!NT_SUCCESS(Status))
     {
-        ERR_LOG("OH CMONNNNN REEEE");
+        ERR_LOG("Could not append to unicode string");
         goto Log;
     }
 
     Status = RtlUnicodeStringCopy(VN, &ValueName);
     if (!NT_SUCCESS(Status))
     {
-        ERR_LOG("COULD NOT FUCKING COPY STRING");
+        ERR_LOG("Could not copy string");
         VN = nullptr;
         goto Log;
     }

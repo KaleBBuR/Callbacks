@@ -5,12 +5,6 @@
 #include <ntddk.h>
 #include <ntstrsafe.h>
 
-#define TD_ASSERT(_exp) \
-    ((!(_exp)) ? \
-        (__annotation(L"Debug", L"AssertFail", L#_exp), \
-         DbgRaiseAssertionFailure(), FALSE) : \
-        TRUE)
-
 #define LOG(x, ...) DbgPrintEx(0, 0, "[+][Callbacks][" __FUNCTION__ "]: " x "\n", __VA_ARGS__)
 #define ERR_LOG(x, ...) DbgPrintEx(0, 0, "[-][Callbacks][" __FUNCTION__ "]: " x "\n", __VA_ARGS__)
 
